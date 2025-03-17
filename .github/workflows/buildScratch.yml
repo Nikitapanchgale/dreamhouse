@@ -23,11 +23,11 @@ jobs:
       # Load secret for dev hub
       - name: "Populate auth file with SFDX_URL secret"
         shell: bash
-      # run: "echo ${{ secrets.DEVHUB_SFDX_URL}} > ./SFDX_URL_STORE.txt"
-        run: echo "${{ secrets.SALESFORCE_JWT_SECRET_KEY }}" > server.key
+        run: "echo ${{ secrets.DEVHUB_SFDX_URL}} > ./SFDX_URL_STORE.txt"
+      # run: echo "${{ secrets.SALESFORCE_JWT_SECRET_KEY }}" > server.key
       - name: "Authenticate with dev hub"
-      # run: sf org login sfdx-url -f ./SFDX_URL_STORE.txt -a devhub -d
-        run: sfdx force:auth:jwt:grant --clientid=${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile=server.key --username="nikita.ashok-panchgale780@agentforce.com" --set-default-dev-hub
+        run: sf org login sfdx-url -f ./SFDX_URL_STORE.txt -a devhub -d
+      # run: sfdx force:auth:jwt:grant --clientid=${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile=server.key --username="nikita.ashok-panchgale780@agentforce.com" --set-default-dev-hub
       # Create a scratch org
       - name: "Create scratch org"
         run: "sf org create scratch -d -f config/project-scratch.json -a Nikita_scratch-org --duration-days 1"
