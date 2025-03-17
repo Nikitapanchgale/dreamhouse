@@ -12,7 +12,7 @@ jobs:
     steps:
       # Install Salesforce CLI
       - name: "Install Salesforce CLI"
-        run: |
+        run: | 
           npm install @salesforce/cli --location=global
           nodeInstallPath=$(npm config get prefix)
           echo "$nodeInstallPath/bin" >> $GITHUB_PATH
@@ -26,11 +26,10 @@ jobs:
         run: "echo ${{ secrets.DEVHUB_SFDX_URL}} > ./SFDX_URL_STORE.txt"
       # run: echo "${{ secrets.SALESFORCE_JWT_SECRET_KEY }}" > server.key
       - name: "Authenticate with dev hub"
-        run: sf org login sfdx-url -f ./SFDX_URL_STORE.txt -a devhub -d
+        run: |
+          sf org login sfdx-url -f ./SFDX_URL_STORE.txt -a devhub -d
+          sf org create scratch -d -f config/project-scratch.json -a Nikita_scratch-org --duration-days 1
       # run: sfdx force:auth:jwt:grant --clientid=${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile=server.key --username="nikita.ashok-panchgale780@agentforce.com" --set-default-dev-hub
       # Create a scratch org
-      - name: "Create scratch org"
-        run: "sf org create scratch -d -f config/project-scratch.json -a Nikita_scratch-org --duration-days 1"
-      # Deploy Project Manifest
-      - name: "Deploy Metadata"
-        run: "sf project deploy start --manifest manifest.xml --target-org Nikita_scratch-org"
+      - name: "List the Orgs"
+        run: "sf org list"
