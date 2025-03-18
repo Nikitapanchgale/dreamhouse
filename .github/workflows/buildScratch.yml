@@ -28,7 +28,7 @@ jobs:
       - name: "Authenticate with dev hub"
         run: |
           sf org login sfdx-url -f ./SFDX_URL_STORE.txt -a devhub -d
-          sf org create scratch -d -f config/project-scratch-def.json -a  my-scratch-org2
+      #sf org create scratch -d -f config/project-scratch-def.json -a  my-scratch-org2
       # run: sfdx force:auth:jwt:grant --clientid=${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile=server.key --username="nikita.ashok-panchgale780@agentforce.com" --set-default-dev-hub
       # Create a scratch org
       - name: "List the Orgs"
