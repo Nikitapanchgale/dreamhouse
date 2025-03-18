@@ -34,5 +34,5 @@ jobs:
       - name: "List the Orgs"
         run: "sf org list"
       # Deploy Project Manifest
-      #- name: "Deploy Metadata"
-      # run: "sf project deploy start --manifest manifest/package.xml --target-org  my-scratch-org2"
+      - name: "Deploy Metadata"
+        run: "sf project deploy start --manifest manifest/package.xml --target-org  my-scratch-org2"
