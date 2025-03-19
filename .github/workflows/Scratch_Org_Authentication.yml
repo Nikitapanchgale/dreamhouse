@@ -26,7 +26,6 @@ jobs:
         run: |
           echo ${{ secrets.DEVHUB_SFDX_URL_1}} > ./SFDX_URL_1_STORE.txt 
           echo ${{ secrets.DEVHUB_SFDX_URL}} > ./SFDX_URL_STORE.txt 
-      # run: echo "${{ secrets.SALESFORCE_JWT_SECRET_KEY }}" > server.key
       - name: "Authenticate with dev hub"
         run: |
           sf org login sfdx-url -f ./SFDX_URL_STORE.txt -a DevHub -d
