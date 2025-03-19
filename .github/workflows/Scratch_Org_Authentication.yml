@@ -31,6 +31,7 @@ jobs:
           sf org login sfdx-url -f ./SFDX_URL_1_STORE.txt -a DevHub -d
       # Deploy Project Manifest
       - name: "Deploy Metadata"
-        run: |        
+        run: |   
+          sf org login sfdx-url -f ./SFDX_URL_1_STORE.txt -a DevHub -d
           sf project deploy start --target-org  my-scratch-org4
           
