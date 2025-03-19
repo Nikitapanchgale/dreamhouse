@@ -29,6 +29,7 @@ jobs:
         run: |
           sf org login sfdx-url -f ./SFDX_URL_STORE.txt -a DevHub -d
           sf org create scratch --definition-file config/project-scratch-def.json --set-default --alias my-scratch-org3 --target-dev-hub DevHub
+          sf org generate password --target-org my-scratch-org3
           sf org display -u my-scratch-org3 --verbose
       #sf org display -u my-scratch-org3 --verbose  > scratch-org-authfile.json
       #cat scratch-org-authfile.json
