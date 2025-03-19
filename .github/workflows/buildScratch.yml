@@ -30,11 +30,16 @@ jobs:
           sf org login sfdx-url -f ./SFDX_URL_STORE.txt -a DevHub -d
           sf org create scratch --definition-file config/project-scratch-def.json --set-default --alias my-scratch-org3 --target-dev-hub DevHub
           sf org generate password --target-org my-scratch-org3
-          sf org display -u my-scratch-org3 --verbose
+          sf org display -u my-scratch-org3  --json --verbose  > scratch-org-authfile.json
       #sf org display -u my-scratch-org3 --verbose  > scratch-org-authfile.json
       #cat scratch-org-authfile.json
       # run: sfdx force:auth:jwt:grant --clientid=${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile=server.key --username="nikita.ashok-panchgale780@agentforce.com" --set-default-dev-hub
       # Create a scratch org
+      - name:  updload scratch org auth file
+        uses: actions/upload-artifact@v4
+        with:
+          name: authfiles
+          path: ./scratch-org-authfile*.json
       - name: "List the Orgs"
         run: "sf org list"
       # Deploy Project Manifest
