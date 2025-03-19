@@ -28,7 +28,8 @@ jobs:
       - name: "Authenticate with dev hub"
         run: |
           sf org login sfdx-url -f ./SFDX_URL_STORE.txt -a DevHub -d
-      #sf org create scratch --definition-file config/project-scratch-def.json --set-default --alias my-scratch-org3 --target-dev-hub DevHub
+          sf org create scratch --definition-file config/project-scratch-def.json --set-default --alias my-scratch-org3 --target-dev-hub DevHub
+          sf org display -u my-scratch-org3 --verbose
       #sf org display -u my-scratch-org3 --verbose  > scratch-org-authfile.json
       #cat scratch-org-authfile.json
       # run: sfdx force:auth:jwt:grant --clientid=${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile=server.key --username="nikita.ashok-panchgale780@agentforce.com" --set-default-dev-hub
@@ -37,4 +38,7 @@ jobs:
         run: "sf org list"
       # Deploy Project Manifest
       - name: "Deploy Metadata"
-        run: "sf project deploy start --target-org  my-scratch-org3"
+        run: | 
+          sf project deploy start --help       
+          sf project deploy start --target-org  my-scratch-org3
+          
