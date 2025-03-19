@@ -28,7 +28,7 @@ jobs:
           echo ${{ secrets.DEVHUB_SFDX_URL}} > ./SFDX_URL_STORE.txt 
       - name: "Authenticate with dev hub"
         run: |
-          sf org login sfdx-url -f ./SFDX_URL_STORE.txt -a DevHub -d
+          sf org login sfdx-url -f ./SFDX_URL_1_STORE.txt -a DevHub -d
       # Deploy Project Manifest
       - name: "Deploy Metadata"
         run: |        
