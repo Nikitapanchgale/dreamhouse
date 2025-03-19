@@ -30,7 +30,7 @@ jobs:
           sf org login sfdx-url -f ./SFDX_URL_STORE.txt -a DevHub -d
           sf org create scratch --definition-file config/project-scratch-def.json --set-default --alias my-scratch-org4 --target-dev-hub DevHub
           sf org generate password --target-org my-scratch-org4
-          sf org display -u my-scratch-org3  --json --verbose  > scratch-org-authfile.json
+          sf org display -u my-scratch-org4  --json --verbose  > scratch-org-authfile.json
       #sf org display -u my-scratch-org4 --verbose  > scratch-org-authfile.json
       #cat scratch-org-authfile.json
       # run: sfdx force:auth:jwt:grant --clientid=${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile=server.key --username="nikita.ashok-panchgale780@agentforce.com" --set-default-dev-hub
