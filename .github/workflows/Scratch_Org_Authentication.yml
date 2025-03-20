@@ -38,5 +38,5 @@ jobs:
           sf alias set suresh-scratch-org=test-l7lbjpkobbia@example.com
           sleep 10
           sf org list
-          sf project deploy start --target-org  suresh-scratch-org
+          sf project deploy start
           
