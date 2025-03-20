@@ -23,14 +23,14 @@ jobs:
       # Load secret for dev hub
       - name: "Populate auth file with SFDX_URL secret"
         shell: bash
-        run: "echo ${{ secrets.DEVHUB_SFDX_URL_1}} > ./SFDX_URL_STORE.txt"
+        run: "echo ${{ secrets.DEVHUB_SFDX_URL_1}} > ./SFDX_URL_1_STORE.txt"
       # run: echo "${{ secrets.SALESFORCE_JWT_SECRET_KEY }}" > server.key
       - name: "Authenticate with dev hub"
         run: |
-          sf org login sfdx-url -f ./SFDX_URL_STORE.txt -a DevHub -d
-          sf org create scratch --definition-file config/project-scratch-def.json --set-default --alias my-scratch-org4 --target-dev-hub DevHub
-          sf org generate password --target-org my-scratch-org4
-          sf org display -u my-scratch-org4  --json --verbose  > scratch-org-authfile.json
+          sf org login sfdx-url -f ./SFDX_URL_1_STORE.txt -a DevHub -d
+          sf org create scratch --definition-file config/project-scratch-def.json --set-default --alias test-scratch-org --target-dev-hub DevHub
+          sf org generate password --target-org test-scratch-org
+          sf org display -u test-scratch-org  --json --verbose  > test_scratch-org-authfile.json
       #sf org display -u my-scratch-org4 --verbose  > scratch-org-authfile.json
       #cat scratch-org-authfile.json
       # run: sfdx force:auth:jwt:grant --clientid=${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile=server.key --username="nikita.ashok-panchgale780@agentforce.com" --set-default-dev-hub
@@ -39,12 +39,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: authfiles
-          path: ./scratch-org-authfile*.json
+          path: ./test_scratch-org-authfile*.json
       - name: "List the Orgs"
         run: "sf org list"
-      # Deploy Project Manifest
-      - name: "Deploy Metadata"
-        run: | 
-          sf project deploy start --help       
-          sf project deploy start --target-org  my-scratch-org4
-          
