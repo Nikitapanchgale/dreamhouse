@@ -33,7 +33,7 @@ jobs:
       - name: "Deploy Metadata"
         run: |  
           echo "${{ secrets.TEST_SCRATCH_ORG_SFDX_URL }}" > sfdx_auth_url.txt
-          sfdx auth:sfdxurl:store --sfdx-url-file sfdx_auth_url.txt --setalias  --setdefaultusername
+          sfdx auth:sfdxurl:store --sfdx-url-file sfdx_auth_url.txt --setalias test-scratch-org  --setdefaultusername
           sleep 10
           sf org list
           sf project deploy start --target-org test-scratch-org --ignore-conflicts
