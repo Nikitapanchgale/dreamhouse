@@ -37,5 +37,6 @@ jobs:
           sfdx auth:sfdxurl:store --sfdx-url-file sfdx_auth_url.txt --setalias suresh-scratch-org --setdefaultusername
           sleep 10
           sf org list
-          sf project deploy start --target-org suresh-scratch-org
+          sf project deploy start --target-org suresh-scratch-org --ignore-conflicts
+          
           
