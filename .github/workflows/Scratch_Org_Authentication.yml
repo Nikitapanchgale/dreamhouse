@@ -25,18 +25,17 @@ jobs:
         shell: bash
         run: |
           echo ${{ secrets.DEVHUB_SFDX_URL_1}} > ./SFDX_URL_1_STORE.txt 
-          echo ${{ secrets.DEVHUB_SFDX_URL}} > ./SFDX_URL_STORE.txt 
+     # echo ${{ secrets.DEVHUB_SFDX_URL}} > ./SFDX_URL_STORE.txt 
       - name: "Authenticate with dev hub"
         run: |
-          sf org login sfdx-url -f ./SFDX_URL_1_STORE.txt -a DevHub -d
-          
+          sf org login sfdx-url -f ./SFDX_URL_1_STORE.txt -a DevHub -d     
       # Deploy Project Manifest
       - name: "Deploy Metadata"
         run: |  
-          echo "${{ secrets.SCRATCH_ORG_SFDX_URL }}" > sfdx_auth_url.txt
-          sfdx auth:sfdxurl:store --sfdx-url-file sfdx_auth_url.txt --setalias suresh-scratch-org --setdefaultusername
+          echo "${{ secrets.TEST_SCRATCH_ORG_SFDX_URL }}" > sfdx_auth_url.txt
+          sfdx auth:sfdxurl:store --sfdx-url-file sfdx_auth_url.txt --setalias  --setdefaultusername
           sleep 10
           sf org list
-          sf project deploy start --target-org suresh-scratch-org --ignore-conflicts
+          sf project deploy start --target-org test-scratch-org --ignore-conflicts
           
           
