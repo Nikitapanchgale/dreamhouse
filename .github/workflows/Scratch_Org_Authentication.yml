@@ -35,6 +35,7 @@ jobs:
           sf org login sfdx-url -f ./SFDX_URL_1_STORE.txt -a DevHub -d
           sf org list
           sf org login sfdx-url --sfdx-url-file SFDX_Auth_File/scratch-org-authfile.json
+          sf alias set suresh-scratch-org=test-l7lbjpkobbia@example.com
           sfdx force:config:set defaultusername=yakkuluri.suresh224@agentforce.com
           sf org list
           sf project deploy start --target-org  suresh-scratch-org
