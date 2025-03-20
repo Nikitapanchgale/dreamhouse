@@ -37,5 +37,5 @@ jobs:
           sf org login sfdx-url --sfdx-url-file SFDX_Auth_File/scratch-org-authfile.json
           sfdx force:config:set defaultusername=yakkuluri.suresh224@agentforce.com
           sf org list
-          sf project deploy start --target-org  my-scratch-org4
+          sf project deploy start --target-org  suresh-scratch-org
           
