@@ -32,7 +32,9 @@ jobs:
       # Deploy Project Manifest
       - name: "Deploy Metadata"
         run: |  
+          sf org login sfdx-url -f ./SFDX_URL_1_STORE.txt -a DevHub -d
+          sf org list
           sfdx force:config:set defaultusername=yakkuluri.suresh224@agentforce.com
           sf org login sfdx-url --sfdx-url-file SFDX_Auth_File/scratch-org-authfile.json
-          sf project deploy start --sfdx-url-file SFDX_Auth_File/scratch-org-authfile.json --target-org  my-scratch-org4
+          sf project deploy start --target-org  my-scratch-org4
           
