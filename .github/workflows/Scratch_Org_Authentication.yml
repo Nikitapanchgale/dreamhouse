@@ -4,7 +4,7 @@ name: test run scratch
 on:
   # The workflow will run whenever an event happens on a pull request test
   pull_request:
-    types: [opened, synchronize]
+    types: [merged]
 
 jobs:
   validate_scratch_deploy:
@@ -25,13 +25,18 @@ jobs:
         shell: bash
         run: |
           echo ${{ secrets.DEVHUB_SFDX_URL_1}} > ./SFDX_URL_1_STORE.txt 
-          echo ${{ secrets.DEVHUB_SFDX_URL}} > ./SFDX_URL_STORE.txt 
-      # run: echo "${{ secrets.SALESFORCE_JWT_SECRET_KEY }}" > server.key
+     # echo ${{ secrets.DEVHUB_SFDX_URL}} > ./SFDX_URL_STORE.txt 
       - name: "Authenticate with dev hub"
         run: |
-          sf org login sfdx-url -f ./SFDX_URL_STORE.txt -a DevHub -d
+          sf org login sfdx-url -f ./SFDX_URL_1_STORE.txt -a DevHub -d     
       # Deploy Project Manifest
       - name: "Deploy Metadata"
-        run: |        
-          sf project deploy start --target-org  my-scratch-org4
+        run: |  
+          echo "${{ secrets.TEST_SCRATCH_ORG_SFDX_URL }}" > sfdx_auth_url.txt
+          sfdx auth:sfdxurl:store --sfdx-url-file sfdx_auth_url.txt --setalias test-scratch-org  --setdefaultusername
+          sleep 10
+          sf org list
+          sf project deploy validate --source-dir force-app --target-org test-scratch-org
+       #sf project deploy start --target-org test-scratch-org --ignore-conflicts
+          
           
