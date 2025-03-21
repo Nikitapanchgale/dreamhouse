@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  validate_scratch_deploy:
+  Create_scratch_Org:
     runs-on: ubuntu-latest
     steps:
       # Install Salesforce CLI
