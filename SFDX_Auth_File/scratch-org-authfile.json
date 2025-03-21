@@ -1,0 +1,25 @@
+{
+  "status": 0,
+  "result": {
+    "id": "00DAw000006FoE6MAK",
+    "devHubId": "yakkuluri.suresh224@agentforce.com",
+    "apiVersion": "63.0",
+    "accessToken": "00DAw000006FoE6!AQEAQObKheWGpkcnWcNPwyNQ7dPvVPzxusoSVVFxZzuBpoZFog9Mwa_5cBV4_IdzV4_X6N6hA7zBSG9fc0BZAGehvO4zDi7h",
+    "instanceUrl": "https://power-computing-4593-dev-ed.scratch.my.salesforce.com",
+    "username": "test-gfzm9qgqjetg@example.com",
+    "clientId": "PlatformCLI",
+    "status": "Active",
+    "expirationDate": "2025-03-26",
+    "createdBy": "yakkuluri.suresh224@agentforce.com",
+    "edition": "Developer",
+    "orgName": "Dreamhouse",
+    "createdDate": "2025-03-19T09:51:27.000+0000",
+    "signupUsername": "test-gfzm9qgqjetg@example.com",
+    "sfdxAuthUrl": "force://PlatformCLI::5Aep861FrKVm3Lz7EQfFs.RZ3R7FoSPxsKFKlTbI2rC9KYSFdIDRHgN2tPsa1pQVAnuR9nO0.Mbpe12cApNLhL1@power-computing-4593-dev-ed.scratch.my.salesforce.com",
+    "alias": "my-scratch-org4"
+  },
+  "warnings": [
+    "The \"-u\" flag has been deprecated. Use \"--target-org | -o\" instead.",
+    "This command will expose sensitive information that allows for subsequent activity using your current authenticated session.\nSharing this information is equivalent to logging someone in under the current credential, resulting in unintended access and escalation of privilege.\nFor additional information, please review the authorization section of the https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm."
+  ]
+}
