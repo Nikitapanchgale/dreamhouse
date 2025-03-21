@@ -4,7 +4,7 @@ name: test run scratch
 on:
   # The workflow will run whenever an event happens on a pull request test
   pull_request:
-    types: [opened, synchronize]
+    types: [merged]
 
 jobs:
   validate_scratch_deploy:
